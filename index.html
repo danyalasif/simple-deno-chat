@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!-- <link rel="stylesheet" href="./styles.css"> -->
     <title>Chat using Deno</title>
   </head>
   <body>
@@ -35,15 +36,17 @@
         }, [])
 
         return html`
-          ${messages.map(message => html`
-              <div>${message}</div>
-          `)}
-
           <form onSubmit=${onSendMessage}>
            <input type="text" />
            <button>Send</button>
           </form>
+
+          ${messages.map(message => html`
+              <div class="message" style="background-color: ${"#" + Math.floor(Math.random()*16777215).toString(16)}">${message}</div>
+          `)}
         `
+
+        
       }
 
       render(html`<${Chat} />`, document.getElementById('app'))
